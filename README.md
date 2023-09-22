@@ -6,13 +6,7 @@ A personal installation and configuration guide for NixOS.
 
 ## Installation
 
-#### Network
-
-#### Partition
-
-#### Format
-
-#### Install
+The procedure for a minimal installation does not differ significantly from other distributions. A more thorough description can be found [here](https://github.com/frtzzzzz/nixos/blob/main/INSTALL.md).
 
 ## Configuration
 
