@@ -19,8 +19,9 @@ Some of the desirable features characterising the project can be summed up as fo
 This approach allows the simplification of several important tasks:
 - Multiple users and versions
 - Atomic upgrades and rollbacks
-- Garbage collection
+- Effective garbage collection
 - Transparent deployment of source and binary
+- Managing build environments
 
 #### NixOS
 
