@@ -21,26 +21,35 @@ To achieve this goal, several desirable features are implemented:
       available to other entities, meaning they can be assigned to names, taken as arguments or returned by other functions. These properties facilitate the handling of complex problems through the implementation of modular structures. Additionally,
       functions always produce the same result and cannot be affected by any side effects, making the language purely functional. 
 - Lazy evaluation
-    - Also known as call-by-need, this strategy evaluates expressions only when necessary and avoids repetition by sharing the results.
+    - Also known as call-by-need, this strategy evaluates expressions only when necessary and avoids repetition by sharing the results as required.
 
 Individual packages are installed into isolated subdirectories generated through cryptographic hashes inside a parent directory called the **store**. The unique identifier of each package takes into account its name and version, as well as the names and versions of all its dependencies.
 
-This approach allows the simplification of some important tasks:
+This approach allows for the simplification of some important tasks:
 - Multiple users and versions
-    - 
+    - Different versions of the same package are handled separately, avoiding any interference or dependency conflicts. At the same time, non-privileged users can securely install the same software through individual profiles without duplication.
 - Atomic upgrades and rollbacks
+    - Upgrading packages does not overwrite the previous install and instead adds a different path for the new version. Thanks to this, there exists no point in time at which files from different software versions appear simultaneously. As long as
+      the old package is stored, rolling back also remains an option.
 - Safe reference and garbage collection
+    - The environment tracks references automatically, allowing unused packages to be deleted safely. Additionally, uninstalling software does not directly remove it from the system, enabling rollbacks and keeping different user profiles intact.
+      Actual deletions only occur when running the *garbage collector*.
 - Transparent deployment of source and binary
+    - Expressions generally contain instructions for building a package from source. This process tends to be computationally expensive, as many dependencies may need to be built as well. To avoid this issue, the package manager
+      can automatically skip the build process by checking for the existence of *precompiled binaries* and fetching those instead of building locally if possible.
 - Reproducible management of build environments
+    - Due to all relevant information being stored in a configuration file, environments can easily be replicated on any compatible system.
 
 #### NixOS
 
-[NixOS](https://nixos.org/manual/nixos/stable/) is 
+[NixOS](https://nixos.org/manual/nixos/stable/) is a Linux distribution based on the package management system Nix.
 
 ## Installation
 
 The installation procedure is described separately in [this file](https://github.com/frtzzzzz/nixos/blob/main/INSTALL.md).
 
 ## Configuration
+
+#### Commands
 
 #### Flakes
